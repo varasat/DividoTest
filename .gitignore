@@ -3,3 +3,5 @@
 .idea/modules.xml
 .idea/vcs.xml
 /vendor/
+logs/app.log
+logs/app.log

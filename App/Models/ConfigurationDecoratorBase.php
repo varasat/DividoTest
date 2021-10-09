@@ -18,8 +18,7 @@
             $this->component = $component;
         }
 
-
-        public function readData(): string
+        public function readData(): array
         {
             $this->component->readData();
         }

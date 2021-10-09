@@ -5,6 +5,6 @@
 
     interface Configuration
     {
-        public function readData(): string;
+        public function readData(): array;
         public function writeData(): bool;
     }

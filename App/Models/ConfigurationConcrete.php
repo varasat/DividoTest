@@ -7,13 +7,13 @@
 
     class ConfigurationConcrete implements Configuration
     {
-        private string $data;
-        public function __construct(string $data)
+        private array $data;
+        public function __construct(array $data)
         {
             $this->data = $data;
         }
 
-        public function readData(): string
+        public function readData(): array
         {
             return $this->data;
         }
