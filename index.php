@@ -7,12 +7,14 @@ use App\Controller\Investing;
 use App\Lib\App;
 use App\Lib\InterestCalculator;
 use App\Lib\InvestHelper;
-use App\Lib\Router;
+    use App\Lib\JsonFileReader;
+    use App\Lib\JsonFileValidator;
+    use App\Lib\Router;
 use App\Lib\Request;
 use App\Lib\Response;
 
 Router::get('/', function () {
-    (new FileParsingDemo())->indexAction();
+    (new FileParsingDemo(new JsonFileReader(),new JsonFileValidator()))->indexAction();
 });
 
 //Router::get('/invest', function () {
