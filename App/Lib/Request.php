@@ -1,46 +1,33 @@
-<?php namespace App\Lib;
+<?php
 
-class Request
-{
-    public $params;
-    public $reqMethod;
-    public $contentType;
+    namespace App\Lib;
 
-    public function __construct($params = [])
+    /**
+     * Class Request
+     * @package App\Lib
+     */
+    class Request
     {
-        $this->params = $params;
-        $this->reqMethod = trim($_SERVER['REQUEST_METHOD']);
-        $this->contentType = !empty($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        /**
+         * @var array|mixed
+         */
+        private $params;
+
+        /**
+         * Request constructor.
+         * @param  array  $params
+         */
+        public function __construct(array $params = [])
+        {
+            $this->params = $params;
+        }
+
+        /**
+         * @return array|mixed
+         */
+        public function getParams()
+        {
+            return $this->params;
+        }
+
     }
-
-    public function getBody()
-    {
-        if ($this->reqMethod !== 'POST') {
-            return '';
-        }
-
-        $body = [];
-        foreach ($_POST as $key => $value) {
-            $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-
-        return $body;
-    }
-
-    public function getJSON()
-    {
-        if ($this->reqMethod !== 'POST') {
-            return [];
-        }
-
-        if (strcasecmp($this->contentType, 'application/json') !== 0) {
-            return [];
-        }
-
-        // Receive the RAW post data.
-        $content = trim(file_get_contents("php://input"));
-        $decoded = json_decode($content);
-
-        return $decoded;
-    }
-}

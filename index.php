@@ -23,7 +23,7 @@ Router::get('/', function () {
 
 Router::get('/post/([0-9]*)', function (Request $req, Response $res) {
     $res->toJSON([
-        'post' => ['id' => $req->params[0]],
+        'post' => ['id' => $req->getParams()[0]],
         'status' => 'ok'
     ]);
 });
