@@ -12,19 +12,16 @@
          * @var Configuration
          */
         protected Configuration $component;
+        protected array $dataset;
 
-        public function __construct(Configuration $component)
+        public function __construct(Configuration $component,array $dataset)
         {
             $this->component = $component;
+            $this->dataset = $dataset;
         }
 
-        public function readData(): array
+        public function writeData(array $data): bool
         {
-            $this->component->readData();
-        }
-
-        public function writeData(): bool
-        {
-            $this->component->writeData();
+            return $this->component->writeData($data);
         }
     }

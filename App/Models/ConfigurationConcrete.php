@@ -7,19 +7,14 @@
 
     class ConfigurationConcrete implements Configuration
     {
-        private array $data;
-        public function __construct(array $data)
-        {
-            $this->data = $data;
-        }
+        const CONFIG_FILE_PATH = './App/Resources/config.json';
 
-        public function readData(): array
+        public function writeData(array $data): bool
         {
-            return $this->data;
-        }
-
-        public function writeData(): bool
-        {
-            // TODO: Implement writeData() method.
+            $file = fopen(self::CONFIG_FILE_PATH, 'w');
+            $newContents = json_encode($data);
+            fwrite($file, $newContents);
+            fclose($file);
+            return true;
         }
     }
