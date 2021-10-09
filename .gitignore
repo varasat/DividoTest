@@ -5,3 +5,6 @@
 /vendor/
 logs/app.log
 logs/app.log
+logs/app.log
+logs/request.log
+.idea/php.xml
