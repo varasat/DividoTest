@@ -1,0 +1,8 @@
+{
+  "cache": {
+    "mongoDb": {
+      "host": "mongoDb",
+      "port": 6379
+    }
+  }
+}

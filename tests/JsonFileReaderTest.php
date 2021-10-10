@@ -23,9 +23,9 @@
 
         public function testGetContentsReturnsActualContentsOfFile()
         {
-            $path = './App/Resources/TestFixtures/configtest.json';
+            $path = './App/Resources/TestFixtures/config_only_environment.json';
             $this->assertEquals(
-                '{"environment": "production"}',
+                '{"environment": "development"}',
                 $this->fileReader->getContentsOfFile($path)
             );
         }

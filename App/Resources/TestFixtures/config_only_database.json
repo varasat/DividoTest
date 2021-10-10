@@ -1,0 +1,8 @@
+{
+  "database": {
+    "host": "oracle",
+    "port": 3306,
+    "username": "divido",
+    "password": "divido"
+  }
+}

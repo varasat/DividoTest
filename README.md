@@ -1,11 +1,17 @@
 #Technical test for Andrei Manolache
 
 ##Quick notes for setting up this project:
-
+- The project isn't dockerized, I work on windows and for some reason WSL2 was throwing a fit and shutting down sporadically. I'll troubleshoot it in my own time since I wanted to deliver this project in a timely manner.
 - Please make sure you have php installed
 - Please make sure you have composer installed
 - please run composer install to obtain all the packages including PHPUnit
 - I simply ran the project with this command : php -S localhost:8000
+##Design choices 
+
+- I assumed the required parameters for the config file are : environment, database, cache
+- In certain environments like production it's very dangerous if during a config switch certain parameters aren't present(like the DB) so this test application has defaults set for each essential config section (environment/database/cache)
+- For writing the config file we used the Decorator pattern. You can see this by observing the Configuration*.php set of classes in /App/Models
+- I have broken down each functionality (Read, validate, log, etc) into separate units so they can be individually tested and also respect the Single Responsibility Principle
 
 ##Quick notes about the project itself
 
@@ -20,8 +26,10 @@
 - I like loggers to just know what's going on and if anything breaks or if
   someone wants to access my page so I also added a logger in the Lib
 
+
 - To save some time on most projects (coding tests/pure php projects etc)
   I do tend to reuse a project skeleton for the routing and the logging. 
+  
 
 Don't hesitate to contact me at andrei.r.manolache@gmail.com for
 further details on this
