@@ -5,6 +5,10 @@
 
     use App\Models\Interfaces\Configuration;
 
+    /**
+     * Class ConfigurationConcrete
+     * @package App\Models
+     */
     class ConfigurationConcrete implements Configuration
     {
         const CONFIG_FILE_PATH = './App/Resources/config.json';
@@ -22,6 +26,10 @@
             ]
         ];
 
+        /**
+         * @param  array  $data
+         * @return bool
+         */
         public function writeData(array $data = []): bool
         {
             /**

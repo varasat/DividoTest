@@ -6,6 +6,10 @@
 
     use Exception;
 
+    /**
+     * Class JsonIsNotValidException
+     * @package App\Exceptions
+     */
     class JsonIsNotValidException extends Exception
     {
     }

@@ -9,8 +9,15 @@
     use App\Exceptions\JsonIsNotValidException;
     use App\Lib\Interfaces\FileValidator;
 
+    /**
+     * Class JsonFileValidator
+     * @package App\Lib
+     */
     class JsonFileValidator implements FileValidator
     {
+        /**
+         *
+         */
         const JSON_TYPE = 'json';
 
         /**

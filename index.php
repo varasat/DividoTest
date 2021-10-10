@@ -37,4 +37,3 @@
 
     Logger::enableSystemLogs();
     $logger = Logger::getInstance();
-    $logger->info('Hello World');

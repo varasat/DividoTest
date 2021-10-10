@@ -26,6 +26,10 @@
          * @var FileReader
          */
         private FileReader $fileReader;
+        /**
+         * @var Logger|mixed
+         */
+        private Logger $logger;
 
         /**
          * JsonFileWriter constructor.
@@ -36,6 +40,7 @@
         {
             $this->fileValidator = $fileValidator;
             $this->fileReader = $fileReader;
+            $this->logger = Logger::getInstance();
         }
 
         /**
@@ -60,6 +65,7 @@
                     $this->fileValidator->validateFile($filepath);
                 } catch (\Exception $exception) {
                     $filesWithErrors++;
+                    $this->logger->info($exception->getMessage());
                     continue; //if file isn't valid let's just skip decorating it
                 }
                 $fileContent = $this->fileReader->getContentsOfFile($filepath);
@@ -68,6 +74,7 @@
                     $this->fileValidator->validateFileContent($fileContent);
                 } catch (\Exception $exception) {
                     $filesWithErrors++;
+                    $this->logger->info($exception->getMessage());
                     continue; //if file isn't valid let's just skip decorating it
                 }
 

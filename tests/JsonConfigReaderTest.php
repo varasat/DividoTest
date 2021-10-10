@@ -3,7 +3,6 @@
 
     use App\Lib\Interfaces\FileReader;
     use App\Lib\JsonConfigReader;
-    use App\Lib\JsonFileReader;
     use PHPUnit\Framework\TestCase;
 
     class JsonConfigReaderTest extends TestCase
@@ -29,19 +28,19 @@
         {
             $configContent = '{"environment":"production","database":{"host":"mysql","port":3306,"username":"divido","password":"divido"},"cache":{"redis":{"host":"redis","port":6379}}}';
             $this->fileReader->method('getContentsOfFile')->withAnyParameters()->willReturn($configContent);
-            $expectedArray = array (
+            $expectedArray = array(
                 'environment' => 'production',
                 'database' =>
-                    array (
+                    array(
                         'host' => 'mysql',
                         'port' => 3306,
                         'username' => 'divido',
                         'password' => 'divido',
                     ),
                 'cache' =>
-                    array (
+                    array(
                         'redis' =>
-                            array (
+                            array(
                                 'host' => 'redis',
                                 'port' => 6379,
                             ),
@@ -52,11 +51,12 @@
                 $this->configReader->readConfig()
             );
         }
+
         public function testGetLevel1ContentString()
         {
             $configContent = '{"environment":"production","database":{"host":"mysql","port":3306,"username":"divido","password":"divido"},"cache":{"redis":{"host":"redis","port":6379}}}';
             $this->fileReader->method('getContentsOfFile')->withAnyParameters()->willReturn($configContent);
-            $expectedArray = array (
+            $expectedArray = array(
                 'environment' => 'production',
             );
             $this->assertEquals(
@@ -64,13 +64,14 @@
                 $this->configReader->readConfig('environment')
             );
         }
+
         public function testGetLevel1ContentArray()
         {
             $configContent = '{"environment":"production","database":{"host":"mysql","port":3306,"username":"divido","password":"divido"},"cache":{"redis":{"host":"redis","port":6379}}}';
             $this->fileReader->method('getContentsOfFile')->withAnyParameters()->willReturn($configContent);
-            $expectedArray = array (
+            $expectedArray = array(
                 'database' =>
-                    array (
+                    array(
                         'host' => 'mysql',
                         'port' => 3306,
                         'username' => 'divido',
@@ -82,11 +83,12 @@
                 $this->configReader->readConfig('database')
             );
         }
+
         public function testGetLevel2NestedContent()
         {
             $configContent = '{"environment":"production","database":{"host":"mysql","port":3306,"username":"divido","password":"divido"},"cache":{"redis":{"host":"redis","port":6379}}}';
             $this->fileReader->method('getContentsOfFile')->withAnyParameters()->willReturn($configContent);
-            $expectedArray = array (
+            $expectedArray = array(
                 'host' => 'mysql'
             );
             $this->assertEquals(
@@ -99,7 +101,7 @@
         {
             $configContent = '{"environment":"production","database":{"host":"mysql","port":3306,"username":"divido","password":"divido"},"cache":{"redis":{"host":"redis","port":6379}}}';
             $this->fileReader->method('getContentsOfFile')->withAnyParameters()->willReturn($configContent);
-            $expectedArray = array (
+            $expectedArray = array(
                 'host' => 'redis'
             );
             $this->assertEquals(
