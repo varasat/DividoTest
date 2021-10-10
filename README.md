@@ -22,7 +22,7 @@
 
 - I have broken down each functionality (Read, validate, log, etc) into separate units so they can be individually tested and also respect the Single Responsibility Principle
 
-- If we want to expand to expand the functionality to another type of file than JSON the only thing needed to do is to create new reader/validator/writer classes that implement the corresponding interfaces
+- If we want to expand the functionality to another type of file than JSON the only thing needed to do is to create new reader/validator/writer classes that implement the corresponding interfaces
 
 ## Where to find everything? 
 
@@ -33,7 +33,7 @@ It can be used the following way if initialized in a class:
   if the user wants to return the host of the redis of the cache section of the config
   
 
-- the `JsonFileWriter` is the class responsible of saving new configs to the  project's config file. It consumes an array of filepaths and adds the data contained to the current config file, overriding only what's necessary. If our config file contains an `environment`, a `database` and a `cache` and the json files we're consuming only tackle the `cache` and the `database`, the `environment` doesn't change.
+- the `JsonFileWriter` is the class responsible of saving new configs to the  project's config file. It consumes an array of filepaths and adds the data contained to the current config file, overriding only what's necessary. If our config file contains an `environment`, a `database` and a `cache` and the json files we're consuming only tackles the `cache` and the `database`, the `environment` doesn't change.
 This class can be called the following way: 
   ```            $test = $this->fileWriter->writeConfigFile(['pathToFile1', 'pathToFile2'.....]); ```
 
@@ -50,7 +50,7 @@ This class can be called the following way:
 ## The Playground
 
 - so I know that in addition to all of the unit tests you guys might want to play around with this project a bit so I left the `App/Controller/FileParsingDemo.php` file there with a couple of injections so you can play around with the project and try and break it in many different ways.
-
+- This page can simply be accessed by going to `http://localhost:8000/`
 
 ## Quick notes about the project itself
 
