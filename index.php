@@ -8,6 +8,7 @@
     use App\Lib\App;
     use App\Lib\InterestCalculator;
     use App\Lib\InvestHelper;
+    use App\Lib\JsonConfigReader;
     use App\Lib\JsonFileReader;
     use App\Lib\JsonFileValidator;
     use App\Lib\JsonFileWriter;
@@ -22,25 +23,11 @@
                 new JsonFileWriter(
                     new JsonFileValidator(),
                     new JsonFileReader()
+                ),
+                new JsonConfigReader(
+                    new JsonFileReader()
                 )
             ))->indexAction();
-        }
-    );
-
-//Router::get('/invest', function () {
-//    (new Investing(new InterestCalculator(),new InvestHelper()))->investingAction();
-//});
-
-
-    Router::get(
-        '/post/([0-9]*)',
-        function (Request $req, Response $res) {
-            $res->toJSON(
-                [
-                    'post' => ['id' => $req->getParams()[0]],
-                    'status' => 'ok'
-                ]
-            );
         }
     );
 
